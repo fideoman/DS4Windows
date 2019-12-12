@@ -1175,12 +1175,15 @@ Properties.Resources.DS4Update, MessageBoxButtons.YesNo, MessageBoxIcon.Question
             bool minToTask = GetMinToTaskbar();
             if (FormWindowState.Minimized == WindowState && !minToTask)
             {
+                FormBorderStyle = FormBorderStyle.None;
+            } else if (FormWindowState.Minimized == WindowState && minToTask)
+            {
                 Hide();
-                ShowInTaskbar = false;
+                ShowInTaskbar = true;
                 FormBorderStyle = FormBorderStyle.None;
             }
 
-            else if (FormWindowState.Normal == WindowState && !minToTask)
+            if (FormWindowState.Normal == WindowState)
             {
                 //mAllowVisible = true;
                 Show();
